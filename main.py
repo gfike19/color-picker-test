@@ -14,11 +14,13 @@ def indexGet():
 
 @app.route("/", methods=["POST"])
 def indexPost():
-    lastcolor = request.form['favcolor']
-    return redirect("/lastcolor/?favcolor=" + lastcolor)
+    favcolor = str(request.form['favcolor'])
+    #/pagename?(evaluate)variableWhichHas=value
+    #method=post is needed on form
+    return redirect("/lastcolor?favcolor=" + favcolor)
     
-@app.route("/lastcolor")
+@app.route("/lastcolor", methods=['GET'])
 def lastColorGet():
-    favcolor = request.args.get("favcolor")
+    favcolor = str(request.args.get("favcolor"))
     return render_template("lastcolor.html", favcolor=favcolor)
 app.run()
