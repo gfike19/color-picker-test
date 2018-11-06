@@ -1,9 +1,6 @@
 from flask import Flask, request, redirect, render_template
-import os
-# import jinja2
-
-# template_dir = os.path.join(os.path.dirname(__file__), 'templates')
-# jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape=True)
+from PIL import ImageDraw
+from PIL import Image
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -23,7 +20,15 @@ def indexPost():
     #/pagename?(evaluate)variableWhichHas=value
     #method=post is needed on form
     return render_template("lastcolor.html", favcolor=favcolor)
+    # return redirect("/lastcolor?col="+favcolor)
     
+
+@app.route("/test", methods=['GET'])
+def colorRep():
+    img = Image.new("RGB", 1024, "white")
+    draw = ImageDraw.Draw(img)
+    test = draw.rectangle(((0, 00), (100, 100)), fill="black")
+    return render_template("lastcolor.html", test=test)
 
 if __name__ == "__main__":
     app.run()
