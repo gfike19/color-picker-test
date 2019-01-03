@@ -23,12 +23,12 @@ def indexPost():
     # return redirect("/lastcolor?col="+favcolor)
     
 
-@app.route("/test", methods=['GET'])
-def colorRep():
-    img = Image.new("RGB", 1024, "white")
-    draw = ImageDraw.Draw(img)
-    test = draw.rectangle(((0, 00), (100, 100)), fill="black")
-    return render_template("lastcolor.html", test=test)
+# @app.route("/test", methods=['GET'])
+# def colorRep():
+#     img = Image.new("RGB", 1024, "white")
+#     draw = ImageDraw.Draw(img)
+#     test = draw.rectangle(((0, 00), (100, 100)), fill="black")
+#     return render_template("lastcolor.html", test=test)
 
 if __name__ == "__main__":
     app.run()
